@@ -1,16 +1,8 @@
 import React from "react";
+import { Container, Nav, Navbar} from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-class Toto extends React.Component {
-
-  render() {
-    return (
-      <div className="toto">
-        Hello Toto !
-      </div>
-    );
-  }
+export default function App() {
+  
+      
 }
-
-const App = () => (<Toto />);
-
-export default App;
