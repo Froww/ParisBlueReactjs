@@ -7,12 +7,14 @@ import BookingSearchController from "./controller/BookingSearchController";
 import DisplayReservation from "./view/DisplayReservation";
 import AvailableOffersController from "./controller/AvailableOffersController";
 import MakeReservationController from "./controller/MakeReservationController";
+import ReservationConfirmation from "./view/ReservationConfirmation";
 
 export default function App() {
 
     const [reservation, setReservation] = useState(null);
     const [availableOffers, setAvailableOffers] = useState([]);
     const [selectedOffer, setSelectedOffer] = useState(null);
+    const [reservationInfo, setReservationInfo] = useState(null);
 
     return(
         
@@ -49,11 +51,14 @@ export default function App() {
                                                 setAvailableOffers = {(data) => setAvailableOffers(data)}
                                                 selectedOffer={selectedOffer}
                                                 setSelectedOffer = {(data) => setSelectedOffer(data)} />}/>
-                <Route path="/Reserver/form" element={<MakeReservationController selectedOffer={selectedOffer}/>}/>
+                <Route path="/Reserver/form" element={<MakeReservationController selectedOffer={selectedOffer} reservationInfo={reservationInfo}
+                                                setReservationInfo={(data) => setReservationInfo(data)}/>}/>
                 <Route path="/Contact" element={<Welcome/>}/>
                 <Route path="/BookingSearch" element={<BookingSearchController reservation={reservation}
                                                 setReservation={(data) => setReservation(data)}/>}/>
                 <Route path="/Reservation" element={<DisplayReservation/>}/>
+                <Route path="/ReservationConfirmation" element={<ReservationConfirmation reservationInfo = {reservationInfo}/>}/>
+                
 
                 
             </Routes>

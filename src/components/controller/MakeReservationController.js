@@ -12,17 +12,21 @@ export default function MakeReservationController(props) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            firstname: firstname,
+            person:{firstname: firstname,
             lastname: lastname,
             email: email,
-            phone: phone,
+            phone: phone},
             plannedArrival: startDate,
             plannedDeparture: endDate,
-            offerId: offerId,
-            roomId: roomId,
+            offer:{
+                offerId: offerId
+            ,
+            room:{roomId: roomId}},
             isPayed: isPayed
         })
     };
+
+    console.log(requestOptions);
 
     fetch(backUrl, requestOptions)
         .then(response => {
@@ -55,6 +59,9 @@ export default function MakeReservationController(props) {
        phone, 
        startDate, endDate, offerId, roomId, isPayed) => 
        makeReservation(firstname, lastname, email, phone, startDate, endDate, offerId, roomId, isPayed)} 
-       selectedOffer={props.selectedOffer}/>
+       selectedOffer={props.selectedOffer}
+        reservationInfo={props.reservationInfo}
+        setReservationInfo={(data) => props.setReservationInfo(data)}
+       />
   );
 }
